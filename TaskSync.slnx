@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="TaskSync.API/TaskSync.API.csproj" />
+  <Project Path="TaskSync.Application/TaskSync.Application.csproj" />
+  <Project Path="TaskSync.Domain/TaskSync.Domain.csproj" />
+  <Project Path="TaskSync.Infrastructure/TaskSync.Infrastructure.csproj" />
+  <Project Path="TaskSync.Tests/TaskSync.Tests.csproj" />
+</Solution>
