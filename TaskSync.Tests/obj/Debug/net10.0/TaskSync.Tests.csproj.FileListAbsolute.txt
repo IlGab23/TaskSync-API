@@ -1,0 +1,12 @@
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\bin\Debug\net10.0\TaskSync.Tests.deps.json
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\bin\Debug\net10.0\TaskSync.Tests.dll
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\bin\Debug\net10.0\TaskSync.Tests.pdb
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.AssemblyInfoInputs.cache
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.AssemblyInfo.cs
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.csproj.CoreCompileInputs.cache
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.sourcelink.json
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.dll
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\refint\TaskSync.Tests.dll
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\TaskSync.Tests.pdb
+C:\C# dot net web api proj\TaskSync API\TaskSync-API\TaskSync.Tests\obj\Debug\net10.0\ref\TaskSync.Tests.dll

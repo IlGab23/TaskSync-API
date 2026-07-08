@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "TaskSync.Infrastructure/1.0.0": {
+        "dependencies": {
+          "TaskSync.Application": "1.0.0",
+          "TaskSync.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TaskSync.Infrastructure.dll": {}
+        }
+      },
+      "TaskSync.Application/1.0.0": {
+        "dependencies": {
+          "TaskSync.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TaskSync.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "TaskSync.Domain/1.0.0": {
+        "runtime": {
+          "TaskSync.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TaskSync.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TaskSync.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TaskSync.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
