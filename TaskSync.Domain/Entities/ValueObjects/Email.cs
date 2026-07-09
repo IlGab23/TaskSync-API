@@ -10,6 +10,9 @@ public sealed partial record Email
 
     private Email(string value) => Value = value;
 
+    #pragma warning disable CS8618
+    private Email() {} //Costruttore vuoto Per EF Core
+
     public static Result<Email> Create(string email)
     {
         List<Error> errors = new();

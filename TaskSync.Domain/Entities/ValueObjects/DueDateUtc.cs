@@ -7,6 +7,9 @@ public record DueDateUtc
 
     private DueDateUtc(DateTimeOffset date) => Value = date;
 
+    #pragma warning disable CS8618
+    private DueDateUtc() {} //Costruttore vuoto Per EF Core
+
     public static Result<DueDateUtc> Create(DateTimeOffset date, TimeProvider timeProvider)
     {
         var now = timeProvider.GetUtcNow();

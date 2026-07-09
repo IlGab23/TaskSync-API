@@ -24,6 +24,9 @@ public sealed class SyncTask
         CreatedAtUtc = createdAtUtc;
     }
 
+#pragma warning disable CS8618
+    private SyncTask() {} //Costruttore vuoto per EF Core
+
     public static Result<SyncTask> Create(string title, string description, DueDateUtc dueDateUtc, Guid userId, DateTimeOffset createdAtUtc)
     {
         List<Error> errors = new();

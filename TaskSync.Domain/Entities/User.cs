@@ -23,6 +23,9 @@ public sealed class User
         CreatedAtUtc = createdAtUtc;
     }
 
+    #pragma warning disable CS8618
+    private User() {} //Costrutto vuoto per EF Core
+
     public static Result<User> Create(string username, Email email, string passwordHash, DateTimeOffset createdAtUtc)
     {
         List<Error> errors = new();
