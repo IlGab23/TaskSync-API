@@ -5,8 +5,8 @@ namespace TaskSync.Application.Interfaces;
 
 public interface IApplicationDbContext
 {
-    DbSet<User> User { get; }
-    DbSet<SyncTask> TaskSync { get; }
+    DbSet<User> Users { get; }
+    DbSet<SyncTask> TaskSyncs { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
