@@ -1,0 +1,27 @@
+using Microsoft.EntityFrameworkCore;
+using TaskSync.Application.Interfaces;
+using TaskSync.Domain.Entities;
+
+namespace TaskSync.Infrastructure.Persistence;
+
+public class ApplicationDbContext : DbContext, IApplicationDbContext
+{
+    public DbSet<User> User { get; set; }
+
+    public DbSet<SyncTask> TaskSync { get; set; }
+
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+        
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
+    }
+
+
+}
