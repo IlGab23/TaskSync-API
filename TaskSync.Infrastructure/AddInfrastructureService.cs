@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using TaskSync.Application.Interfaces;
+using TaskSync.Application.Interfaces.Security;
 using TaskSync.Infrastructure.Persistence;
+using TaskSync.Infrastructure.Security;
 
 namespace TaskSync.Infrastructure;
 
@@ -45,6 +48,9 @@ public static class AddInfrastructureService
         services.AddAuthorization();
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+
+        services.AddSingleton<IPasswordHasher, Argon2idPasswordHasher>();
+        services.AddSingleton<IJwtProvider, JwtProvider>();
 
         return services;
     }
