@@ -29,8 +29,8 @@ public class JwtProvider(IConfiguration config, TimeProvider timeProvider) : IJw
         {
             Subject = new ClaimsIdentity(claims),
             Expires = timeProvider.GetUtcNow().AddMinutes(expireMinutes).UtcDateTime,
-            Issuer = _config["Jwt:Issuer"],
-            Audience = _config["Jwt:Audience"],
+            Issuer = _config["Jwt:Issuer"] ?? throw new InvalidOperationException("Jwt:Issuer: Missing in configuration file"),
+            Audience = _config["Jwt:Audience"] ?? throw new InvalidOperationException("Jwt:Audience: Missing in configuration file"),
             SigningCredentials = credentials
         };
 

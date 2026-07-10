@@ -30,13 +30,13 @@ public static class AddInfrastructureService
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(config["Jwt:SecretKey"])),
+                    IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(config["Jwt:SecretKey"] ?? throw new InvalidOperationException("Jwt:SecretKey: Missing in configuration file"))),
 
                     ValidateIssuer = true,
-                    ValidIssuer = config["Jwt:Issuer"],
+                    ValidIssuer = config["Jwt:Issuer"] ?? throw new InvalidOperationException("Jwt:Issuer: Missing in configuration file"),
 
                     ValidateAudience = true,
-                    ValidAudience = config["Jwt:Audience"],
+                    ValidAudience = config["Jwt:Audience"] ?? throw new InvalidOperationException("Jwt:Audience: Missing in configuration file"),
 
                     ValidateLifetime = true,
                 };
