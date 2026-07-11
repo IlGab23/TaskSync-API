@@ -1,9 +1,20 @@
+using TaskSync.Domain.ResultPattern;
 namespace TaskSync.Domain.Entities.SecurityEntities;
 
 public class RefreshToken
 {
+
+    private RefreshToken(Guid id, Guid userId, string tokenHash, DateTimeOffset expiry)
+    {
+        Id = id;
+        UserId = userId;
+        TokenHash = tokenHash;
+        Expiry = expiry;
+    }
+
     public Guid Id { get; init; }
     public Guid UserId { get; init; }
+    public User? User { get; init; }
 
     public string TokenHash { get; init; } = string.Empty;
     public DateTimeOffset Expiry { get; init; }
@@ -18,5 +29,10 @@ public class RefreshToken
     {
         RevokedAt = RevokeDate;
         ReplacedByTokenHash = ReplacedBy;
+    }
+
+    public static Result<RefreshToken> Create(Guid userId, string tokenHash, DateTimeOffset expiry)
+    {
+        return new RefreshToken(Guid.NewGuid(), userId, tokenHash, expiry);
     }
 }

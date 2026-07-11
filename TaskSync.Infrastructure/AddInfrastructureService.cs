@@ -51,6 +51,7 @@ public static class AddInfrastructureService
 
         services.AddSingleton<IPasswordHasher, Argon2idPasswordHasher>();
         services.AddSingleton<IJwtProvider, JwtProvider>();
+        services.AddSingleton<IRefreshTokenProvider, RefreshTokenProvider>();
 
         return services;
     }
