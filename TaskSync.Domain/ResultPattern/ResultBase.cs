@@ -18,9 +18,12 @@ public class ResultBase
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
 
-    readonly List<Error> errorList;
+    public readonly List<Error> errorList;
 
 
     public static ResultBase Success() => new(true, []);
     public static ResultBase Failure(List<Error> errors) => new(false, errors);
+
+    public static implicit operator ResultBase(List<Error> errors) => Failure(errors);
+    public static implicit operator ResultBase(Error error) => Failure([error]);
 }

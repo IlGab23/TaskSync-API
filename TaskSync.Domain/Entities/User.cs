@@ -1,3 +1,4 @@
+using TaskSync.Domain.Entities.SecurityEntities;
 using TaskSync.Domain.Entities.ValueObjects;
 using TaskSync.Domain.ResultPattern;
 
@@ -6,6 +7,7 @@ namespace TaskSync.Domain.Entities;
 public sealed class User
 {
     private readonly List<SyncTask> _syncTasks = new();
+    private readonly List<RefreshToken> _refreshTokens = new();
 
     public Guid Id { get; }
     public string Username { get; private set; }
@@ -13,6 +15,7 @@ public sealed class User
     public string PasswordHash { get; private set; }
     public DateTimeOffset CreatedAtUtc { get; }
     public IReadOnlyCollection<SyncTask> SyncTasks => _syncTasks.AsReadOnly();
+    public IReadOnlyCollection<RefreshToken> RefreshTokens => _refreshTokens.AsReadOnly();
 
     private User(Guid id, string username, Email email, string passwordHash, DateTimeOffset createdAtUtc)
     {

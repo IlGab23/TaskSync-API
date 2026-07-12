@@ -19,4 +19,6 @@ public sealed class Result<TValue> : ResultBase
     //Operatori impliciti: Servono per evitare di dover scrivere ogni volta Result<TValue>.Success(Value) o Result<TValue.Failure(errors) quando richiamati
     public static implicit operator Result<TValue>(TValue value) => Success(value);
     public static implicit operator Result<TValue>(List<Error> errors) => Failure(errors);
+    public static implicit operator Result<TValue>(Error error) => Failure([error]);
+
 }
