@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using TaskSync.Application.Features.Security.Commands;
 using TaskSync.Application.Interfaces;
 using TaskSync.Application.Interfaces.Security;
@@ -12,7 +13,7 @@ public class RegistrationHandler(IApplicationDbContext appDbContext, IPasswordHa
 {
     public async Task<ResultBase> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        if(appDbContext.Users.Any(u => u.Email.Value == request.Email)) return Error.Validation("Registration.AccountArleadyExists", "The account arleady exists");
+        if(await appDbContext.Users.AnyAsync(u => u.Email.Value == request.Email, cancellationToken)) return Error.Validation("Registration.AccountArleadyExists", "The account arleady exists");
 
         var emailResult = Email.Create(request.Email);
         if (emailResult.IsFailure) return emailResult.errorList;

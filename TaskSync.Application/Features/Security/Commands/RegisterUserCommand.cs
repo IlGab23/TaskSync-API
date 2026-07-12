@@ -25,9 +25,9 @@ public class RegisterUserCommandValidator : AbstractValidator<RegisterUserComman
             .NotEmpty().WithMessage("Password cannot be empty")
             .MinimumLength(8).WithMessage("Password must be at least 8 characters")
             .MaximumLength(50).WithMessage("Password must be smaller than 51 characters")
-            .Matches("[a-z]").WithMessage("Password must contains at least 1 lower letter")
-            .Matches("[A-Z]").WithMessage("Password must contains at least 1 lower letter")
-            .Matches("[0-9]").WithMessage("Password must contains at least 1 lower letter")
-            .Matches("[^a-zA-Z0-9]").WithMessage("Password must contains at least 1 lower letter");
+            .Matches("[a-z]").WithMessage("Password must contain at least 1 lower letter")
+            .Matches("[A-Z]").WithMessage("Password must contain at least 1 upper letter")
+            .Matches("[0-9]").WithMessage("Password must contain at least 1 number")
+            .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least 1 special character");
     }
 }
