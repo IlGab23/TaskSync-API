@@ -22,7 +22,7 @@ builder.Services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 
-    options.AddPolicy("ScrapingDefender", context =>
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
     {
         var userId = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
