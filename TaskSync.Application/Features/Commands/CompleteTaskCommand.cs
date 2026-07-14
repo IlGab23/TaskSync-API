@@ -1,4 +1,3 @@
-using System.Data;
 using FluentValidation;
 using MediatR;
 using TaskSync.Domain.ResultPattern;
