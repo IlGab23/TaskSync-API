@@ -6,7 +6,7 @@ using TaskSync.Domain.ResultPattern;
 namespace TaskSync.Application.Features.Commands;
 
 public record CompleteTaskCommand(Guid UserId, Guid TaskId) : IRequest<Result<CompleteTaskCommandOutput>>;
-public record CompleteTaskCommandOutput(Guid TaskId, bool IsSuccess);
+public record CompleteTaskCommandOutput(Guid TaskId);
 
 public class CompleteTaskCommandValidator : AbstractValidator<CompleteTaskCommand>
 {
