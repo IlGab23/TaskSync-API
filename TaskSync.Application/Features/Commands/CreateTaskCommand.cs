@@ -3,10 +3,11 @@ using FluentValidation;
 using MediatR;
 using Microsoft.VisualBasic;
 using TaskSync.Domain.ResultPattern;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TaskSync.Application.Features.Commands;
 
-public record CreateTaskCommand(Guid UserId, string Title, string Description, DueDate Expiry) : IRequest<Result<CreateTaskCommandOutput>>;
+public record CreateTaskCommand(Guid UserId, string Title, string Description, DateTimeOffset Expiry) : IRequest<Result<CreateTaskCommandOutput>>;
 public record CreateTaskCommandOutput(Guid TaskId);
 
 public class CreateTaskCommandValidator : AbstractValidator<CreateTaskCommand>
