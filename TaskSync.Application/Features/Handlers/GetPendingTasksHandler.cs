@@ -2,7 +2,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TaskSync.Application.Features.Querys;
 using TaskSync.Application.Interfaces;
-using TaskSync.Domain.Entities;
 using TaskSync.Domain.ResultPattern;
 
 namespace TaskSync.Application.Features.Handlers;
