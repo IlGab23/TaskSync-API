@@ -40,7 +40,7 @@ public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TReq
             var failureMethod = resultType.GetMethod("Failure", BindingFlags.Public | BindingFlags.Static);
             if (failureMethod is not null)
             {
-                return (TResponse)failureMethod.Invoke(null, [validationErrors])!;
+                return (TResponse)failureMethod.Invoke(null, [new List<Error> { validationErrors }])!;
             }
         }
         else if (typeof(TResponse) == typeof(ResultBase))
