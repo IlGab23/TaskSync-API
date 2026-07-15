@@ -4,6 +4,7 @@ using TaskSync.API.Endpoints;
 using TaskSync.API.Extensions;
 using TaskSync.Application;
 using TaskSync.Infrastructure;
+using TaskSync.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseDbUpMigrations(builder.Configuration.GetConnectionString("QuartzDbConnection")!);
 app.UseCors("AllowedFront-end");
 app.UseRateLimiter();
 
@@ -77,5 +79,6 @@ app.UseHttpsRedirection();
 
 app.MapSystemEndpoint();
 app.MapSecurityEndpoints();
+app.MapTaskEndpoints();
 
 app.Run();

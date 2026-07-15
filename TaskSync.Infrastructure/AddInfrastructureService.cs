@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Quartz;
 using TaskSync.Application.Interfaces;
 using TaskSync.Application.Interfaces.Security;
+using TaskSync.Infrastructure.BackgroundJobs.BJSetups;
 using TaskSync.Infrastructure.Persistence;
 using TaskSync.Infrastructure.Security;
+using static System.TimeSpan;
 
 namespace TaskSync.Infrastructure;
 
@@ -25,6 +28,37 @@ public static class AddInfrastructureService
                     errorNumbersToAdd: null
                 );
             });
+        });
+
+        services.ConfigureOptions<DueTaskNotificationJobSetup>();
+
+        services.AddQuartz(options =>
+        {
+            options.SchedulerId = "AUTO";
+            options.SchedulerName = "TaskSyncScheduler";
+
+            options.UsePersistentStore(StoreOptions =>
+            {
+                StoreOptions.UseProperties = true;
+                StoreOptions.UseNewtonsoftJsonSerializer();
+
+                StoreOptions.UseSqlServer(sqlOptions =>
+                {
+                    sqlOptions.ConnectionString = config.GetConnectionString("QuartzDbConnection");
+                });
+
+                StoreOptions.UseClustering(clusterOptions =>
+                {
+                    clusterOptions.CheckinInterval = TimeSpan.FromSeconds(15);
+
+                    clusterOptions.CheckinMisfireThreshold = TimeSpan.FromSeconds(60);
+                });
+            });
+        });
+
+        services.AddQuartzHostedService(options =>
+        {
+            options.WaitForJobsToComplete = true;
         });
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
